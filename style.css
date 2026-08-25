@@ -88,33 +88,34 @@ body {
     margin-bottom: 30px;
 }
 
-.logo-container {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    border-radius: 50%;
+.logo-container-img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 20px;
-    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
+    margin: 0 auto 5px;
 }
 
-.logo-icon {
-    font-size: 36px;
-    color: white;
+.logo-img {
+    width: 100%;
+    max-width: 100%; /* Diatur 100% karena logo baru berbentuk landscape (memanjang) */
+    height: auto;
+    object-fit: contain;
 }
 
-.form-header h2 {
-    color: var(--primary);
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 8px;
+.header-divider {
+    width: 80%;
+    height: 4px;
+    background: #fbbf24; /* Warna kuning (yellow) yang elegan */
+    margin: 15px auto;
+    border-radius: 2px;
 }
 
 .form-header p {
-    color: var(--text-muted);
-    font-size: 14px;
+    color: var(--primary-dark);
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 5px;
+    text-align: left;
 }
 
 .input-group {
@@ -189,6 +190,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    flex-wrap: wrap; /* Mencegah tombol dan label bertabrakan di HP */
+    gap: 10px;
 }
 
 .upload-header label {
@@ -231,11 +234,13 @@ body {
 
 .file-input {
     flex: 1;
-    padding: 10px;
+    min-width: 0; /* PENTING: Mencegah input file melebar dan mendorong tombol delete keluar layar */
+    padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     background: white;
-    font-size: 14px;
+    font-size: 13px;
+    overflow: hidden;
 }
 
 .file-input::file-selector-button {
@@ -257,14 +262,16 @@ body {
     background: #fee2e2;
     color: var(--error);
     border: none;
-    width: 36px;
-    height: 36px;
+    flex: 0 0 40px; /* Ukuran tetap dan fix, tidak bisa menyusut */
+    width: 40px;
+    height: 40px;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.2s;
+    font-size: 16px;
 }
 
 .btn-remove-file:hover {
@@ -343,8 +350,90 @@ body {
     font-weight: 600;
 }
 
-@media (max-width: 480px) {
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-row .input-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
     .container {
-        padding: 24px;
+        padding: 24px 16px;
+        margin: 0;
+        border-radius: 20px;
+    }
+
+    .form-header {
+        margin-bottom: 20px;
+    }
+    
+    /* Pertahankan berdampingan di HP agar tidak terlalu panjang */
+    .input-row {
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .input-row .input-group {
+        margin-bottom: 0;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .input-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    /* Perkecil padding dan ukuran input di HP */
+    .input-icon-wrapper input,
+    .input-icon-wrapper select {
+        padding: 12px 12px 12px 38px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .input-icon-wrapper i {
+        left: 14px;
+        font-size: 14px;
+    }
+
+    .input-icon-wrapper select {
+        background-position: right 12px center;
+    }
+
+    .logo-img {
+        max-width: 100%; /* Biarkan 100% di HP agar teks di dalam logonya tetap terbaca */
+    }
+
+    .header-divider {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .form-header p {
+        font-size: 14px; /* Teks instruksi disesuaikan */
+    }
+
+    .upload-section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .submit-btn {
+        padding: 14px;
+        font-size: 15px;
+        border-radius: 10px;
     }
 }

@@ -11,15 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Flatpickr Datepicker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
     <div class="background-animation"></div>
     <div class="container">
         <div class="form-header">
-            <div class="logo-container">
-                <i class="fa-solid fa-passport logo-icon"></i>
+            <div class="logo-container-img">
+                <img src="LOGO 2.png" alt="Logo LENGKAP-IN" class="logo-img">
             </div>
-            <h2>Lengkapi Berkas Paspor</h2>
+            <div class="header-divider"></div>
             <p>Silakan unggah dokumen persyaratan yang kurang.</p>
         </div>
         
@@ -40,8 +43,8 @@
                 </div>
             </div>
 
-            <div class="input-row" style="display: flex; gap: 15px; margin-bottom: 20px;">
-                <div class="input-group" style="flex: 1; margin-bottom: 0;">
+            <div class="input-row">
+                <div class="input-group">
                     <label for="tempat_lahir">Tempat Lahir</label>
                     <div class="input-icon-wrapper">
                         <i class="fa-solid fa-location-dot"></i>
@@ -49,11 +52,12 @@
                     </div>
                 </div>
 
-                <div class="input-group" style="flex: 1; margin-bottom: 0;">
+                <div class="input-group">
                     <label for="tanggal_lahir">Tanggal Lahir</label>
                     <div class="input-icon-wrapper">
                         <i class="fa-solid fa-calendar-days"></i>
-                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                        <input type="text" id="tanggal_lahir" name="tanggal_lahir" required placeholder="DD/MM/YYYY">
+                        <i class="fa-regular fa-calendar" style="position: absolute; right: 15px; left: auto; color: #1e3a8a; pointer-events: none; font-size: 18px;"></i>
                     </div>
                 </div>
             </div>
@@ -78,7 +82,7 @@
 
             <div class="upload-section">
                 <div class="upload-header">
-                    <label>Upload Kekurangan Berkas (PDF / JPG)</label>
+                    <label>Kekurangan Berkas (PDF / JPG)</label>
                     <button type="button" id="addFileBtn" class="btn-sm"><i class="fa-solid fa-plus"></i> Tambah File</button>
                 </div>
                 <div id="fileInputsContainer">

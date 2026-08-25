@@ -3,6 +3,12 @@
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzqbqnN74yyhAW0UDgiwE3ffVN2MMczBFFr7ugCvqgeuYDRVvH2YZPXPWlJqVpvDI_m/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Inisialisasi Flatpickr untuk kalender dengan format DD/MM/YYYY yang pasti
+    flatpickr("#tanggal_lahir", {
+        dateFormat: "d/m/Y",
+        allowInput: true
+    });
+
     const addFileBtn = document.getElementById('addFileBtn');
     const fileInputsContainer = document.getElementById('fileInputsContainer');
     const form = document.getElementById('uploadForm');
@@ -96,10 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Siapkan data form
             const formData = new FormData(form);
-            // Format ulang tanggal (opsional) agar lebih rapi, misal yyyy-mm-dd ke dd-mm-yyyy
-            const rawDate = formData.get('tanggal_lahir');
-            const [year, month, day] = rawDate.split('-');
-            const formattedDate = `${day}-${month}-${year}`;
+
+            // Flatpickr sudah memformat value menjadi DD/MM/YYYY secara otomatis
+            const formattedDate = formData.get('tanggal_lahir');
 
             const dataPayload = {
                 nama_pemohon: formData.get('nama_pemohon'),
