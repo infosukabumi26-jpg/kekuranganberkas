@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Kekurangan Berkas Paspor</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- SweetAlert2 for beautiful notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <div class="form-header">
+            <div class="logo-container">
+                <i class="fa-solid fa-passport logo-icon"></i>
+            </div>
+            <h2>Lengkapi Berkas Paspor</h2>
+            <p>Silakan unggah dokumen persyaratan yang kurang.</p>
+        </div>
+        
+        <form id="uploadForm">
+            <div class="input-group">
+                <label for="nama_pemohon">Nama Pemohon</label>
+                <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="nama_pemohon" name="nama_pemohon" required placeholder="Masukkan Nama Lengkap">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="nomor_pemohon">Nomor Permohonan / NIK</label>
+                <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-id-card"></i>
+                    <input type="text" id="nomor_pemohon" name="nomor_pemohon" required placeholder="Masukkan Nomor Permohonan / NIK">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="ttl">Tempat / Tanggal Lahir</label>
+                <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input type="text" id="ttl" name="ttl" required placeholder="Contoh: Jakarta, 17 Agustus 1990">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="petugas">Petugas Pewawancara</label>
+                <div class="input-icon-wrapper">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <select id="petugas" name="petugas" required>
+                        <option value="" disabled selected>-- Pilih Petugas --</option>
+                        <option value="M. Argina Farmi">M. Argina Farmi</option>
+                        <option value="Alifia">Alifia</option>
+                        <option value="Hossiana">Hossiana</option>
+                        <option value="Elis">Elis</option>
+                        <option value="Dede Hermansyah">Dede Hermansyah</option>
+                        <option value="Tulus">Tulus</option>
+                        <option value="Nadya">Nadya</option>
+                        <option value="Zacky">Zacky</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <div class="upload-header">
+                    <label>Upload Kekurangan Berkas (PDF / JPG)</label>
+                    <button type="button" id="addFileBtn" class="btn-sm"><i class="fa-solid fa-plus"></i> Tambah File</button>
+                </div>
+                <div id="fileInputsContainer">
+                    <div class="file-input-wrapper">
+                        <input type="file" name="fileUpload[]" accept=".pdf, .jpg, .jpeg" required class="file-input">
+                        <button type="button" class="btn-remove-file" style="display:none;" onclick="removeFile(this)" title="Hapus Berkas"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fa-solid fa-paper-plane"></i> Kirim Berkas
+            </button>
+        </form>
+        
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>Sedang Mengirim Berkas...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+function doPost(e) {
+  try {
+    // 1. Tangkap JSON yang dikirim dari Frontend
+    var data = JSON.parse(e.postData.contents);
+    
+    // GANTI ID FOLDER DI BAWAH INI DENGAN ID FOLDER GOOGLE DRIVE ANDA
+    // Contoh link drive: https://drive.google.com/drive/folders/1A2B3C4D5E... (ID adalah 1A2B3C4D5E...)
+    var FOLDER_ID = 'ID_FOLDER_GOOGLE_DRIVE_ANDA'; 
+    var folder = DriveApp.getFolderById(FOLDER_ID);
+    
+    // GANTI ID SPREADSHEET DI BAWAH INI DENGAN ID SPREADSHEET ANDA
+    // Contoh link sheet: https://docs.google.com/spreadsheets/d/1X2Y3Z... (ID adalah 1X2Y3Z...)
+    var SHEET_ID = 'ID_SPREADSHEET_ANDA';
+    var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+    
+    var fileUrls = [];
+    
+    // 2. Proses File jika ada
+    if (data.files && data.files.length > 0) {
+      for (var i = 0; i < data.files.length; i++) {
+        var fileData = data.files[i];
+        
+        // Dekode Base64
+        var byteCharacters = Utilities.base64Decode(fileData.base64);
+        var blob = Utilities.newBlob(byteCharacters, fileData.mimeType, fileData.name);
+        
+        // Simpan ke Drive
+        var file = folder.createFile(blob);
+        var fileUrl = file.getUrl();
+        fileUrls.push(fileUrl);
+      }
+    }
+    
+    // 3. Simpan ke Spreadsheet
+    // Pastikan Sheet Anda memiliki header: Timestamp | Nama Pemohon | Nomor Permohonan | TTL | Petugas | Berkas URL
+    sheet.appendRow([
+      new Date(),
+      data.nama_pemohon,
+      data.nomor_pemohon,
+      data.ttl,
+      data.petugas,
+      fileUrls.join(", ")
+    ]);
+    
+    // 4. Return response sukses ke Frontend
+    return ContentService
+      .createTextOutput(JSON.stringify({ "status": "success", "message": "Data berhasil disimpan" }))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (error) {
+    // Logika error
+    return ContentService
+      .createTextOutput(JSON.stringify({ "status": "error", "message": error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// Dibutuhkan untuk menangani request OPTIONS / Preflight CORS
+function doOptions(e) {
+  return ContentService.createTextOutput("")
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeaders({
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    });
+}
