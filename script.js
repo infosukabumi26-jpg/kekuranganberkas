@@ -1,6 +1,6 @@
 // Konfigurasi URL Google Apps Script Web App
 // GANTI URL DI BAWAH INI DENGAN URL WEB APP GAS ANDA!
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbyiSEi8ecm7TfuqT_UfBOExRA2vOmPU6zm9CfHPC6kQaSRVW7ayhbKLNKWNN9874x84/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzqbqnN74yyhAW0UDgiwE3ffVN2MMczBFFr7ugCvqgeuYDRVvH2YZPXPWlJqVpvDI_m/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     const addFileBtn = document.getElementById('addFileBtn');
@@ -96,10 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Siapkan data form
             const formData = new FormData(form);
+            // Format ulang tanggal (opsional) agar lebih rapi, misal yyyy-mm-dd ke dd-mm-yyyy
+            const rawDate = formData.get('tanggal_lahir');
+            const [year, month, day] = rawDate.split('-');
+            const formattedDate = `${day}-${month}-${year}`;
+
             const dataPayload = {
                 nama_pemohon: formData.get('nama_pemohon'),
                 nomor_pemohon: formData.get('nomor_pemohon'),
-                ttl: formData.get('ttl'),
+                ttl: formData.get('tempat_lahir') + ', ' + formattedDate,
                 petugas: formData.get('petugas'),
                 files: []
             };

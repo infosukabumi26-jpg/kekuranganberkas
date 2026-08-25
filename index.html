@@ -40,11 +40,21 @@
                 </div>
             </div>
 
-            <div class="input-group">
-                <label for="ttl">Tempat / Tanggal Lahir</label>
-                <div class="input-icon-wrapper">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <input type="text" id="ttl" name="ttl" required placeholder="Contoh: Jakarta, 17 Agustus 1990">
+            <div class="input-row" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                <div class="input-group" style="flex: 1; margin-bottom: 0;">
+                    <label for="tempat_lahir">Tempat Lahir</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <input type="text" id="tempat_lahir" name="tempat_lahir" required placeholder="Kota Kelahiran">
+                    </div>
+                </div>
+
+                <div class="input-group" style="flex: 1; margin-bottom: 0;">
+                    <label for="tanggal_lahir">Tanggal Lahir</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                    </div>
                 </div>
             </div>
 
