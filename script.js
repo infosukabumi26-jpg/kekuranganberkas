@@ -1,6 +1,6 @@
 // Konfigurasi URL Google Apps Script Web App
 // GANTI URL DI BAWAH INI DENGAN URL WEB APP GAS ANDA!
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzc-PTWP-vZN4MxVk4tC7iG9tf3VeDm3gRYeZgvZhklcJPdts-xGCoiDjCwqfXypKyq/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyiSEi8ecm7TfuqT_UfBOExRA2vOmPU6zm9CfHPC6kQaSRVW7ayhbKLNKWNN9874x84/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Inisialisasi Flatpickr untuk kalender dengan format DD/MM/YYYY yang pasti
@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nama_pemohon: formData.get('nama_pemohon'),
                 nomor_pemohon: formData.get('nomor_pemohon'),
                 ttl: formData.get('tempat_lahir') + ', ' + formattedDate,
+                no_whatsapp: formData.get('no_whatsapp'),
                 petugas: formData.get('petugas'),
                 files: []
             };
@@ -171,9 +172,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingOverlay.classList.remove('active');
         Swal.fire({
             title: 'Berhasil!',
-            text: 'Terima kasih telah melengkapi berkas persyaratan.',
+            text: 'terima kasih telah melengkapi berkas persyaratan permohonan paspor, kelengkapan akan diproses oleh petugas 1-2 hari. terima kasih',
             icon: 'success',
-            confirmButtonColor: '#1e3a8a'
+            confirmButtonColor: '#1e3a8a',
+            timer: 5000, // Durasi popup diatur manual di sini (dalam milidetik)
+            timerProgressBar: true
         }).then(() => {
             // Reset form
             form.reset();
