@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
+
 <body>
     <div class="background-animation"></div>
     <div class="container">
@@ -25,21 +27,23 @@
             <div class="header-divider"></div>
             <p>Silakan unggah dokumen persyaratan yang kurang.</p>
         </div>
-        
+
         <form id="uploadForm">
             <div class="input-group">
                 <label for="nama_pemohon">Nama Pemohon</label>
                 <div class="input-icon-wrapper">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="nama_pemohon" name="nama_pemohon" required placeholder="Masukkan Nama Lengkap">
+                    <input type="text" id="nama_pemohon" name="nama_pemohon" required
+                        placeholder="Masukkan Nama Lengkap">
                 </div>
             </div>
 
             <div class="input-group">
-                <label for="nomor_pemohon">Nomor Permohonan / NIK</label>
+                <label for="nomor_pemohon">Nomor Permohonan</label>
                 <div class="input-icon-wrapper">
                     <i class="fa-solid fa-id-card"></i>
-                    <input type="text" id="nomor_pemohon" name="nomor_pemohon" required placeholder="Masukkan Nomor Permohonan / NIK">
+                    <input type="text" id="nomor_pemohon" name="nomor_pemohon" required
+                        placeholder="Masukkan Nomor Permohonan">
                 </div>
             </div>
 
@@ -57,7 +61,8 @@
                     <div class="input-icon-wrapper">
                         <i class="fa-solid fa-calendar-days"></i>
                         <input type="text" id="tanggal_lahir" name="tanggal_lahir" required placeholder="DD/MM/YYYY">
-                        <i class="fa-regular fa-calendar" style="position: absolute; right: 15px; left: auto; color: #1e3a8a; pointer-events: none; font-size: 18px;"></i>
+                        <i class="fa-regular fa-calendar"
+                            style="position: absolute; right: 15px; left: auto; color: #1e3a8a; pointer-events: none; font-size: 18px;"></i>
                     </div>
                 </div>
             </div>
@@ -91,12 +96,14 @@
             <div class="upload-section">
                 <div class="upload-header">
                     <label>Kekurangan Berkas (PDF / JPG)</label>
-                    <button type="button" id="addFileBtn" class="btn-sm"><i class="fa-solid fa-plus"></i> Tambah File</button>
+                    <button type="button" id="addFileBtn" class="btn-sm"><i class="fa-solid fa-plus"></i> Tambah
+                        File</button>
                 </div>
                 <div id="fileInputsContainer">
                     <div class="file-input-wrapper">
                         <input type="file" name="fileUpload[]" accept=".pdf, .jpg, .jpeg" required class="file-input">
-                        <button type="button" class="btn-remove-file" style="display:none;" onclick="removeFile(this)" title="Hapus Berkas"><i class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="btn-remove-file" style="display:none;" onclick="removeFile(this)"
+                            title="Hapus Berkas"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
             </div>
@@ -105,7 +112,7 @@
                 <i class="fa-solid fa-paper-plane"></i> Kirim Berkas
             </button>
         </form>
-        
+
         <div id="loadingOverlay" class="loading-overlay">
             <div class="spinner"></div>
             <p>Sedang Mengirim Berkas...</p>
@@ -114,4 +121,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
