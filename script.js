@@ -79,23 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 2. Munculkan Konfirmasi
-        const result = await Swal.fire({
-            title: 'Konfirmasi Pengiriman',
-            text: 'Pastikan Anda telah melengkapi berkas persyaratan yang dimintakan petugas!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#1e3a8a',
-            cancelButtonColor: '#ef4444',
-            confirmButtonText: 'Ya, Kirim Sekarang',
-            cancelButtonText: 'Kembali Periksa'
-        });
-
-        // Jika Batal (Tidak)
-        if (!result.isConfirmed) {
-            return; // Kembali ke form
-        }
-
         // Jika Lanjut, tampilkan loading
         loadingOverlay.classList.add('active');
 
