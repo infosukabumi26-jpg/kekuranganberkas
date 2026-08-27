@@ -154,12 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSuccess() {
         loadingOverlay.classList.remove('active');
         Swal.fire({
-            title: 'Berhasil!',
-            text: 'terima kasih telah melengkapi berkas persyaratan permohonan paspor, kelengkapan akan diproses oleh petugas 1-2 hari. terima kasih',
-            icon: 'success',
+            imageUrl: 'caution.jpg',
+            imageAlt: 'Pemberitahuan',
+            showConfirmButton: true,
+            confirmButtonText: 'Close',
             confirmButtonColor: '#1e3a8a',
-            timer: 5000, // Durasi popup diatur manual di sini (dalam milidetik)
-            timerProgressBar: true
+            allowOutsideClick: false // Memaksa user untuk klik tombol Close
         }).then(() => {
             // Reset form
             form.reset();
